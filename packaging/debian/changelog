@@ -1,6 +1,9 @@
 sogo (5.3.0.1.20211126-2) stable; urgency=medium
 
-  * New upstream release.
+  * Try to resolve bug which makes all urls present in an email body to be lowercase.
+  * This branch contains changes to packaging settings/scripts to accomodate local build environment
+  * ActiveSync support is disabled due to problems with wbxml2
+  * MySQL support is disabled sue to problems with mysq vs mariadb
 
  -- Filip Paczyński, Promonotes sp. z o.o. <filip@promonotes.pl>  Fri, 26 Nov 2021 15:33:00 +0100
 
