@@ -58,7 +58,7 @@ include /usr/share/GNUstep/Makefiles/common.make
 
 config.make: configure
 	dh_testdir
-	./configure $(SAML2_CONFIG) $(MFA_CONFIG) $(SODIUM_CONFIG)
+	./configure --disable-debug --enable-strip $(SAML2_CONFIG) $(MFA_CONFIG) $(SODIUM_CONFIG)
 
 #Architecture
 build: build-arch
@@ -67,7 +67,7 @@ build-arch: build-arch-stamp
 build-arch-stamp:  config.make
 #	 Add here commands to compile the arch part of the package.
 	$(MAKE)
-	(cd ActiveSync && $(MAKE))
+#	(cd ActiveSync && $(MAKE))
 	touch $@
 
 clean:
@@ -96,7 +96,7 @@ install-arch: build-arch
 #	dh_installdirs -s
 
 	$(MAKE) DESTDIR=$(DESTDIR) GNUSTEP_INSTALLATION_DOMAIN=SYSTEM install
-	(cd ActiveSync; $(MAKE) DESTDIR=$(DESTDIR) GNUSTEP_INSTALLATION_DOMAIN=SYSTEM install)
+#	(cd ActiveSync; $(MAKE) DESTDIR=$(DESTDIR) GNUSTEP_INSTALLATION_DOMAIN=SYSTEM install)
 
 	install -D -m 644 Scripts/sogo-default debian/tmp/etc/default/sogo
 	install -D -m 644 debian/sogo.overrides debian/tmp/usr/share/lintian/overrides/sogo
